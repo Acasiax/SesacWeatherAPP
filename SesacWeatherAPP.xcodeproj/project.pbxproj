@@ -13,6 +13,14 @@
 		AA6BD34B2C3ECF6400107AF6 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = AA6BD34A2C3ECF6400107AF6 /* Base */; };
 		AA6BD34D2C3ECF6500107AF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA6BD34C2C3ECF6500107AF6 /* Assets.xcassets */; };
 		AA6BD3502C3ECF6500107AF6 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = AA6BD34F2C3ECF6500107AF6 /* Base */; };
+		AA6BD35A2C3ED2E200107AF6 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6BD3592C3ED2E200107AF6 /* WeatherViewModel.swift */; };
+		AA6BD35D2C3ED3AE00107AF6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AA6BD35C2C3ED3AE00107AF6 /* Alamofire */; };
+		AA6BD3602C3ED3B900107AF6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AA6BD35F2C3ED3B900107AF6 /* SnapKit */; };
+		AA6BD3632C3ED3CC00107AF6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = AA6BD3622C3ED3CC00107AF6 /* Kingfisher */; };
+		AA6BD3652C3ED3E800107AF6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6BD3642C3ED3E800107AF6 /* HomeViewController.swift */; };
+		AA6BD3672C3ED75F00107AF6 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6BD3662C3ED75F00107AF6 /* Observable.swift */; };
+		AA6BD3692C3EDB7900107AF6 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = AA6BD3682C3EDB7900107AF6 /* .gitignore */; };
+		AA6BD36B2C3EDBA700107AF6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6BD36A2C3EDBA700107AF6 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +32,11 @@
 		AA6BD34C2C3ECF6500107AF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA6BD34F2C3ECF6500107AF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA6BD3512C3ECF6500107AF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA6BD3592C3ED2E200107AF6 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		AA6BD3642C3ED3E800107AF6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		AA6BD3662C3ED75F00107AF6 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		AA6BD3682C3EDB7900107AF6 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		AA6BD36A2C3EDBA700107AF6 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +44,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA6BD3632C3ED3CC00107AF6 /* Kingfisher in Frameworks */,
+				AA6BD35D2C3ED3AE00107AF6 /* Alamofire in Frameworks */,
+				AA6BD3602C3ED3B900107AF6 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +56,8 @@
 		AA6BD3372C3ECF6400107AF6 = {
 			isa = PBXGroup;
 			children = (
+				AA6BD3682C3EDB7900107AF6 /* .gitignore */,
+				AA6BD36A2C3EDBA700107AF6 /* Model.swift */,
 				AA6BD3422C3ECF6400107AF6 /* SesacWeatherAPP */,
 				AA6BD3412C3ECF6400107AF6 /* Products */,
 			);
@@ -56,6 +74,9 @@
 		AA6BD3422C3ECF6400107AF6 /* SesacWeatherAPP */ = {
 			isa = PBXGroup;
 			children = (
+				AA6BD36C2C3EDBCA00107AF6 /* 날씨 */,
+				AA6BD3642C3ED3E800107AF6 /* HomeViewController.swift */,
+				AA6BD3592C3ED2E200107AF6 /* WeatherViewModel.swift */,
 				AA6BD3432C3ECF6400107AF6 /* AppDelegate.swift */,
 				AA6BD3452C3ECF6400107AF6 /* SceneDelegate.swift */,
 				AA6BD3472C3ECF6400107AF6 /* ViewController.swift */,
@@ -65,6 +86,15 @@
 				AA6BD3512C3ECF6500107AF6 /* Info.plist */,
 			);
 			path = SesacWeatherAPP;
+			sourceTree = "<group>";
+		};
+		AA6BD36C2C3EDBCA00107AF6 /* 날씨 */ = {
+			isa = PBXGroup;
+			children = (
+				AA6BD3662C3ED75F00107AF6 /* Observable.swift */,
+			);
+			name = "날씨";
+			path = "날씨";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +113,11 @@
 			dependencies = (
 			);
 			name = SesacWeatherAPP;
+			packageProductDependencies = (
+				AA6BD35C2C3ED3AE00107AF6 /* Alamofire */,
+				AA6BD35F2C3ED3B900107AF6 /* SnapKit */,
+				AA6BD3622C3ED3CC00107AF6 /* Kingfisher */,
+			);
 			productName = SesacWeatherAPP;
 			productReference = AA6BD3402C3ECF6400107AF6 /* SesacWeatherAPP.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +146,11 @@
 				Base,
 			);
 			mainGroup = AA6BD3372C3ECF6400107AF6;
+			packageReferences = (
+				AA6BD35B2C3ED3AE00107AF6 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				AA6BD35E2C3ED3B900107AF6 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				AA6BD3612C3ED3CC00107AF6 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = AA6BD3412C3ECF6400107AF6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -125,6 +165,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA6BD3692C3EDB7900107AF6 /* .gitignore in Resources */,
 				AA6BD34D2C3ECF6500107AF6 /* Assets.xcassets in Resources */,
 				AA6BD3502C3ECF6500107AF6 /* Base in Resources */,
 				AA6BD34B2C3ECF6400107AF6 /* Base in Resources */,
@@ -138,9 +179,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA6BD36B2C3EDBA700107AF6 /* Model.swift in Sources */,
+				AA6BD35A2C3ED2E200107AF6 /* WeatherViewModel.swift in Sources */,
 				AA6BD3482C3ECF6400107AF6 /* ViewController.swift in Sources */,
 				AA6BD3442C3ECF6400107AF6 /* AppDelegate.swift in Sources */,
+				AA6BD3672C3ED75F00107AF6 /* Observable.swift in Sources */,
 				AA6BD3462C3ECF6400107AF6 /* SceneDelegate.swift in Sources */,
+				AA6BD3652C3ED3E800107AF6 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +408,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AA6BD35B2C3ED3AE00107AF6 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+		AA6BD35E2C3ED3B900107AF6 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		AA6BD3612C3ED3CC00107AF6 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AA6BD35C2C3ED3AE00107AF6 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA6BD35B2C3ED3AE00107AF6 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		AA6BD35F2C3ED3B900107AF6 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA6BD35E2C3ED3B900107AF6 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		AA6BD3622C3ED3CC00107AF6 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA6BD3612C3ED3CC00107AF6 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AA6BD3382C3ECF6400107AF6 /* Project object */;
 }
