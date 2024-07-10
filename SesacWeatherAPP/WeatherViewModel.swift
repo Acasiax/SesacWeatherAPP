@@ -4,7 +4,6 @@
 //
 //  Created by 이윤지 on 7/10/24.
 //
-
 import Foundation
 import Alamofire
 
@@ -37,5 +36,6 @@ class WeatherViewModel {
         }
     }
 }
+
 
 
