@@ -65,10 +65,11 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupUI()
+        addview()
         bindViewModel()
     }
     
-    private func setupUI() {
+    func addview() {
         view.addSubview(cityNameTextField)
         view.addSubview(fetchWeatherButton)
         view.addSubview(cityNameLabel)
@@ -78,6 +79,11 @@ class HomeViewController: UIViewController {
         view.addSubview(pressureLabel)
         view.addSubview(humidityLabel)
         
+    }
+    
+    
+    private func setupUI() {
+
         cityNameTextField.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
             make.leading.equalToSuperview().offset(20)

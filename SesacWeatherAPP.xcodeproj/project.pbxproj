@@ -74,6 +74,7 @@
 		AA6BD3422C3ECF6400107AF6 /* SesacWeatherAPP */ = {
 			isa = PBXGroup;
 			children = (
+				AA6BD3662C3ED75F00107AF6 /* Observable.swift */,
 				AA6BD36C2C3EDBCA00107AF6 /* 날씨 */,
 				AA6BD3642C3ED3E800107AF6 /* HomeViewController.swift */,
 				AA6BD3592C3ED2E200107AF6 /* WeatherViewModel.swift */,
@@ -91,7 +92,6 @@
 		AA6BD36C2C3EDBCA00107AF6 /* 날씨 */ = {
 			isa = PBXGroup;
 			children = (
-				AA6BD3662C3ED75F00107AF6 /* Observable.swift */,
 			);
 			name = "날씨";
 			path = "날씨";

@@ -8,6 +8,7 @@
 import Foundation
 
 class Observable<T> {
+    
     var closure: ((T) -> Void)?
     var value: T {
         didSet {
@@ -24,3 +25,4 @@ class Observable<T> {
         closure(value)
     }
 }
+
