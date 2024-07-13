@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA3CE2602C4219D7003DB370 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3CE25F2C4219D7003DB370 /* SecondViewController.swift */; };
+		AA3CE2622C4219E6003DB370 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3CE2612C4219E6003DB370 /* ThirdViewController.swift */; };
 		AA6BD3442C3ECF6400107AF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6BD3432C3ECF6400107AF6 /* AppDelegate.swift */; };
 		AA6BD3462C3ECF6400107AF6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6BD3452C3ECF6400107AF6 /* SceneDelegate.swift */; };
 		AA6BD3482C3ECF6400107AF6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6BD3472C3ECF6400107AF6 /* ViewController.swift */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA3CE25F2C4219D7003DB370 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		AA3CE2612C4219E6003DB370 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		AA6BD3402C3ECF6400107AF6 /* SesacWeatherAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SesacWeatherAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA6BD3432C3ECF6400107AF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA6BD3452C3ECF6400107AF6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +57,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA3CE25E2C4219C8003DB370 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				AA3CE25F2C4219D7003DB370 /* SecondViewController.swift */,
+				AA3CE2612C4219E6003DB370 /* ThirdViewController.swift */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		AA6BD3372C3ECF6400107AF6 = {
 			isa = PBXGroup;
 			children = (
@@ -74,10 +87,9 @@
 		AA6BD3422C3ECF6400107AF6 /* SesacWeatherAPP */ = {
 			isa = PBXGroup;
 			children = (
+				AA3CE25E2C4219C8003DB370 /* New Group */,
 				AA6BD3662C3ED75F00107AF6 /* Observable.swift */,
 				AA6BD36C2C3EDBCA00107AF6 /* 날씨 */,
-				AA6BD3642C3ED3E800107AF6 /* HomeViewController.swift */,
-				AA6BD3592C3ED2E200107AF6 /* WeatherViewModel.swift */,
 				AA6BD3432C3ECF6400107AF6 /* AppDelegate.swift */,
 				AA6BD3452C3ECF6400107AF6 /* SceneDelegate.swift */,
 				AA6BD3472C3ECF6400107AF6 /* ViewController.swift */,
@@ -92,6 +104,8 @@
 		AA6BD36C2C3EDBCA00107AF6 /* 날씨 */ = {
 			isa = PBXGroup;
 			children = (
+				AA6BD3642C3ED3E800107AF6 /* HomeViewController.swift */,
+				AA6BD3592C3ED2E200107AF6 /* WeatherViewModel.swift */,
 			);
 			name = "날씨";
 			path = "날씨";
@@ -179,6 +193,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA3CE2602C4219D7003DB370 /* SecondViewController.swift in Sources */,
+				AA3CE2622C4219E6003DB370 /* ThirdViewController.swift in Sources */,
 				AA6BD36B2C3EDBA700107AF6 /* Model.swift in Sources */,
 				AA6BD35A2C3ED2E200107AF6 /* WeatherViewModel.swift in Sources */,
 				AA6BD3482C3ECF6400107AF6 /* ViewController.swift in Sources */,

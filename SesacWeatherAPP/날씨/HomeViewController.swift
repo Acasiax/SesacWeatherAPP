@@ -8,19 +8,13 @@
 import UIKit
 import SnapKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UITextFieldDelegate {
     
     private let cityNameTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "도시 이름 입력"
         textField.borderStyle = .roundedRect
         return textField
-    }()
-    
-    private let fetchWeatherButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("날씨 가져오기", for: .normal)
-        return button
     }()
     
     private let cityNameLabel: UILabel = {
@@ -64,39 +58,32 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        setupUI()
         addview()
+        setupUI()
         bindViewModel()
+        
+        cityNameTextField.delegate = self
     }
     
     func addview() {
         view.addSubview(cityNameTextField)
-        view.addSubview(fetchWeatherButton)
         view.addSubview(cityNameLabel)
         view.addSubview(temperatureLabel)
         view.addSubview(descriptionLabel)
         view.addSubview(windSpeedLabel)
         view.addSubview(pressureLabel)
         view.addSubview(humidityLabel)
-        
     }
     
-    
     private func setupUI() {
-
         cityNameTextField.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
         }
         
-        fetchWeatherButton.snp.makeConstraints { make in
-            make.top.equalTo(cityNameTextField.snp.bottom).offset(20)
-            make.centerX.equalToSuperview()
-        }
-        
         cityNameLabel.snp.makeConstraints { make in
-            make.top.equalTo(fetchWeatherButton.snp.bottom).offset(40)
+            make.top.equalTo(cityNameTextField.snp.bottom).offset(40)
             make.centerX.equalToSuperview()
         }
         
@@ -134,13 +121,14 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @objc private func fetchWeatherButtonTapped() {
-        guard let cityName = cityNameTextField.text, !cityName.isEmpty else {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if let cityName = textField.text, !cityName.isEmpty {
+            viewModel.cityName.value = cityName
+        } else {
             showAlert(message: "도시 이름을 입력하세요")
-            return
         }
-        
-        viewModel.cityName.value = cityName
+        return true
     }
     
     private func updateUI(with weather: WeatherModel) {
