@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA3CE2602C4219D7003DB370 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3CE25F2C4219D7003DB370 /* SecondViewController.swift */; };
+		AA3CE2602C4219D7003DB370 /* HorizentalScrollerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3CE25F2C4219D7003DB370 /* HorizentalScrollerVC.swift */; };
 		AA3CE2622C4219E6003DB370 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3CE2612C4219E6003DB370 /* ThirdViewController.swift */; };
+		AA3CE26E2C42AE5A003DB370 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3CE2692C42AE5A003DB370 /* BaseCollectionViewCell.swift */; };
+		AA3CE26F2C42AE5A003DB370 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3CE26A2C42AE5A003DB370 /* BaseTableViewCell.swift */; };
+		AA3CE2702C42AE5A003DB370 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3CE26B2C42AE5A003DB370 /* BaseViewController.swift */; };
+		AA3CE2712C42AE5A003DB370 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3CE26C2C42AE5A003DB370 /* Reusable.swift */; };
 		AA6BD3442C3ECF6400107AF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6BD3432C3ECF6400107AF6 /* AppDelegate.swift */; };
 		AA6BD3462C3ECF6400107AF6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6BD3452C3ECF6400107AF6 /* SceneDelegate.swift */; };
 		AA6BD3482C3ECF6400107AF6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6BD3472C3ECF6400107AF6 /* ViewController.swift */; };
@@ -26,8 +30,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AA3CE25F2C4219D7003DB370 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		AA3CE25F2C4219D7003DB370 /* HorizentalScrollerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizentalScrollerVC.swift; sourceTree = "<group>"; };
 		AA3CE2612C4219E6003DB370 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		AA3CE2692C42AE5A003DB370 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		AA3CE26A2C42AE5A003DB370 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		AA3CE26B2C42AE5A003DB370 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		AA3CE26C2C42AE5A003DB370 /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		AA6BD3402C3ECF6400107AF6 /* SesacWeatherAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SesacWeatherAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA6BD3432C3ECF6400107AF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA6BD3452C3ECF6400107AF6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,10 +68,21 @@
 		AA3CE25E2C4219C8003DB370 /* New Group */ = {
 			isa = PBXGroup;
 			children = (
-				AA3CE25F2C4219D7003DB370 /* SecondViewController.swift */,
+				AA3CE25F2C4219D7003DB370 /* HorizentalScrollerVC.swift */,
 				AA3CE2612C4219E6003DB370 /* ThirdViewController.swift */,
 			);
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		AA3CE26D2C42AE5A003DB370 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				AA3CE2692C42AE5A003DB370 /* BaseCollectionViewCell.swift */,
+				AA3CE26A2C42AE5A003DB370 /* BaseTableViewCell.swift */,
+				AA3CE26B2C42AE5A003DB370 /* BaseViewController.swift */,
+				AA3CE26C2C42AE5A003DB370 /* Reusable.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		AA6BD3372C3ECF6400107AF6 = {
@@ -87,6 +106,7 @@
 		AA6BD3422C3ECF6400107AF6 /* SesacWeatherAPP */ = {
 			isa = PBXGroup;
 			children = (
+				AA3CE26D2C42AE5A003DB370 /* Base */,
 				AA3CE25E2C4219C8003DB370 /* New Group */,
 				AA6BD3662C3ED75F00107AF6 /* Observable.swift */,
 				AA6BD36C2C3EDBCA00107AF6 /* 날씨 */,
@@ -193,11 +213,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA3CE2602C4219D7003DB370 /* SecondViewController.swift in Sources */,
+				AA3CE2602C4219D7003DB370 /* HorizentalScrollerVC.swift in Sources */,
 				AA3CE2622C4219E6003DB370 /* ThirdViewController.swift in Sources */,
 				AA6BD36B2C3EDBA700107AF6 /* Model.swift in Sources */,
 				AA6BD35A2C3ED2E200107AF6 /* WeatherViewModel.swift in Sources */,
 				AA6BD3482C3ECF6400107AF6 /* ViewController.swift in Sources */,
+				AA3CE2702C42AE5A003DB370 /* BaseViewController.swift in Sources */,
+				AA3CE2712C42AE5A003DB370 /* Reusable.swift in Sources */,
+				AA3CE26F2C42AE5A003DB370 /* BaseTableViewCell.swift in Sources */,
+				AA3CE26E2C42AE5A003DB370 /* BaseCollectionViewCell.swift in Sources */,
 				AA6BD3442C3ECF6400107AF6 /* AppDelegate.swift in Sources */,
 				AA6BD3672C3ED75F00107AF6 /* Observable.swift in Sources */,
 				AA6BD3462C3ECF6400107AF6 /* SceneDelegate.swift in Sources */,

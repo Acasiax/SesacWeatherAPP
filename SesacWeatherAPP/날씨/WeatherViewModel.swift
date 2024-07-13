@@ -24,8 +24,9 @@ class WeatherViewModel {
     
     func fetchWeather(completion: @escaping (WeatherModel?) -> Void) {
         let city = cityName.value.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
-        let urlString = "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(apiKey)&units=metric"
-        
+      //나중에 구조체로 옮겨야함
+        let urlString = "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(apiKey)&units=metric&lang=kr"
+                
         AF.request(urlString).responseDecodable(of: WeatherModel.self) { response in
             switch response.result {
             case .success(let weather):

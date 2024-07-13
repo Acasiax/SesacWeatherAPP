@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = .white
         
         window = UIWindow(frame: UIScreen.main.bounds)
+      //  window?.rootViewController = HorizentalScrollerVC()
         window?.rootViewController = HomeViewController()
         window?.makeKeyAndVisible()
         return true
