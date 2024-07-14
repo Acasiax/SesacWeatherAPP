@@ -60,7 +60,7 @@ extension WeatherTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherCollectionViewCell.identifier, for: indexPath) as! WeatherCollectionViewCell
-        cell.configure(time: times[indexPath.row], temperature: temperatures[indexPath.row], iconURL: <#URL?#>)
+        cell.configure(time: times[indexPath.row], temperature: temperatures[indexPath.row])
         return cell
     }
     

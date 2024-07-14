@@ -17,6 +17,7 @@
 		AA3CE2782C43C96F003DB370 /* WeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3CE2772C43C96F003DB370 /* WeatherCollectionViewCell.swift */; };
 		AA3CE27A2C43C983003DB370 /* DailyForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3CE2792C43C983003DB370 /* DailyForecastTableViewCell.swift */; };
 		AA3CE27C2C43C99A003DB370 /* DailyForecastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3CE27B2C43C99A003DB370 /* DailyForecastCollectionViewCell.swift */; };
+		AA3CE2882C4408E2003DB370 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3CE2872C4408E2003DB370 /* HomeViewController.swift */; };
 		AA6BD3442C3ECF6400107AF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6BD3432C3ECF6400107AF6 /* AppDelegate.swift */; };
 		AA6BD3462C3ECF6400107AF6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6BD3452C3ECF6400107AF6 /* SceneDelegate.swift */; };
 		AA6BD3482C3ECF6400107AF6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6BD3472C3ECF6400107AF6 /* ViewController.swift */; };
@@ -26,7 +27,7 @@
 		AA6BD35D2C3ED3AE00107AF6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AA6BD35C2C3ED3AE00107AF6 /* Alamofire */; };
 		AA6BD3602C3ED3B900107AF6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AA6BD35F2C3ED3B900107AF6 /* SnapKit */; };
 		AA6BD3632C3ED3CC00107AF6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = AA6BD3622C3ED3CC00107AF6 /* Kingfisher */; };
-		AA6BD3652C3ED3E800107AF6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6BD3642C3ED3E800107AF6 /* HomeViewController.swift */; };
+		AA6BD3652C3ED3E800107AF6 /* HomeViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6BD3642C3ED3E800107AF6 /* HomeViewController2.swift */; };
 		AA6BD3672C3ED75F00107AF6 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6BD3662C3ED75F00107AF6 /* Observable.swift */; };
 		AA6BD3692C3EDB7900107AF6 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = AA6BD3682C3EDB7900107AF6 /* .gitignore */; };
 		AA6BD36B2C3EDBA700107AF6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6BD36A2C3EDBA700107AF6 /* Model.swift */; };
@@ -43,6 +44,7 @@
 		AA3CE2772C43C96F003DB370 /* WeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCollectionViewCell.swift; sourceTree = "<group>"; };
 		AA3CE2792C43C983003DB370 /* DailyForecastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastTableViewCell.swift; sourceTree = "<group>"; };
 		AA3CE27B2C43C99A003DB370 /* DailyForecastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastCollectionViewCell.swift; sourceTree = "<group>"; };
+		AA3CE2872C4408E2003DB370 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		AA6BD3402C3ECF6400107AF6 /* SesacWeatherAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SesacWeatherAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA6BD3432C3ECF6400107AF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA6BD3452C3ECF6400107AF6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,7 +53,7 @@
 		AA6BD34F2C3ECF6500107AF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA6BD3512C3ECF6500107AF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA6BD3592C3ED2E200107AF6 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
-		AA6BD3642C3ED3E800107AF6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		AA6BD3642C3ED3E800107AF6 /* HomeViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController2.swift; sourceTree = "<group>"; };
 		AA6BD3662C3ED75F00107AF6 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		AA6BD3682C3EDB7900107AF6 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		AA6BD36A2C3EDBA700107AF6 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -141,7 +143,8 @@
 		AA6BD36C2C3EDBCA00107AF6 /* 날씨 */ = {
 			isa = PBXGroup;
 			children = (
-				AA6BD3642C3ED3E800107AF6 /* HomeViewController.swift */,
+				AA3CE2872C4408E2003DB370 /* HomeViewController.swift */,
+				AA6BD3642C3ED3E800107AF6 /* HomeViewController2.swift */,
 				AA3CE2742C43C93B003DB370 /* Cell */,
 			);
 			name = "날씨";
@@ -234,6 +237,7 @@
 				AA3CE2602C4219D7003DB370 /* HorizentalScrollerVC.swift in Sources */,
 				AA3CE27C2C43C99A003DB370 /* DailyForecastCollectionViewCell.swift in Sources */,
 				AA3CE2622C4219E6003DB370 /* ThirdViewController.swift in Sources */,
+				AA3CE2882C4408E2003DB370 /* HomeViewController.swift in Sources */,
 				AA3CE2762C43C94C003DB370 /* WeatherTableViewCell.swift in Sources */,
 				AA6BD36B2C3EDBA700107AF6 /* Model.swift in Sources */,
 				AA6BD35A2C3ED2E200107AF6 /* WeatherViewModel.swift in Sources */,
@@ -245,7 +249,7 @@
 				AA6BD3442C3ECF6400107AF6 /* AppDelegate.swift in Sources */,
 				AA6BD3672C3ED75F00107AF6 /* Observable.swift in Sources */,
 				AA6BD3462C3ECF6400107AF6 /* SceneDelegate.swift in Sources */,
-				AA6BD3652C3ED3E800107AF6 /* HomeViewController.swift in Sources */,
+				AA6BD3652C3ED3E800107AF6 /* HomeViewController2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

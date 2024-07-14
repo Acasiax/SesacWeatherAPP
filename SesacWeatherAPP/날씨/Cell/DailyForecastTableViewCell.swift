@@ -82,7 +82,7 @@ class DailyForecastTableViewCell: UITableViewCell {
         guard let date = formatter.date(from: dateString) else { return nil }
         
         formatter.dateFormat = "EEEE"
-        formatter.locale = Locale(identifier: "ko_KR") 
+        formatter.locale = Locale(identifier: "ko_KR")
         return formatter.string(from: date)
     }
 }

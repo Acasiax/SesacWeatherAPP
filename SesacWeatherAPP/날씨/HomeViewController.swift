@@ -2,7 +2,7 @@
 //  HomeViewController.swift
 //  SesacWeatherAPP
 //
-//  Created by 이윤지 on 7/10/24.
+//  Created by 이윤지 on 7/14/24.
 //
 
 import UIKit
@@ -103,7 +103,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        subView()
         setupConstraints()
         setupDelegates()
         bindViewModel()
@@ -111,13 +111,11 @@ class HomeViewController: UIViewController {
         viewModel.cityName.value = cityNameTextField.text ?? ""
     }
     
-    private func setupUI() {
-        view.backgroundColor = .white
-        contentView.addSubview(backgroundImageView)
+    private func subView() {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         
-        
+        contentView.addSubview(backgroundImageView)
         contentView.addSubview(overlayView)
         contentView.addSubview(cityNameTextField)
         contentView.addSubview(cityNameLabel)
@@ -293,7 +291,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             return 100
         } else {
-            return 400
+            return 300
         }
     }
     
@@ -307,3 +305,4 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return dateString
     }
 }
+

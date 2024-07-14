@@ -19,11 +19,11 @@ class WeatherCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private let weatherIconImageView: UIImageView = {
-           let imageView = UIImageView()
-           imageView.contentMode = .scaleAspectFit
-           return imageView
-       }()
+//    private let weatherIconImageView: UIImageView = {
+//           let imageView = UIImageView()
+//           imageView.contentMode = .scaleAspectFit
+//           return imageView
+//       }()
     
     private let temperatureLabel: UILabel = {
         let label = UILabel()
@@ -43,15 +43,15 @@ class WeatherCollectionViewCell: UICollectionViewCell {
                make.top.leading.trailing.equalToSuperview()
            }
            
-        weatherIconImageView.snp.makeConstraints { make in
-                   make.centerX.equalToSuperview()
-                   make.top.equalTo(timeLabel.snp.bottom).offset(8)
-                   make.width.height.equalTo(30) // Adjust size as needed
-                  
-               }
+//        weatherIconImageView.snp.makeConstraints { make in
+//                   make.centerX.equalToSuperview()
+//                   make.top.equalTo(timeLabel.snp.bottom).offset(8)
+//                   make.width.height.equalTo(30) // Adjust size as needed
+//
+//               }
         
            temperatureLabel.snp.makeConstraints { make in
-               make.top.equalTo(weatherIconImageView.snp.bottom).offset(0)
+               make.top.equalTo(timeLabel.snp.bottom).offset(0)
                make.leading.trailing.bottom.equalToSuperview().inset(8)
                make.bottom.equalToSuperview().offset(1)
            }
@@ -61,20 +61,16 @@ class WeatherCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-//    func configure(time: String, temperature: String) {
-//        timeLabel.text = time
-//        temperatureLabel.text = temperature
-//        print("Time: \(time), Temperature: \(temperature)")
-//    }
-    func configure(time: String, temperature: String, iconURL: URL?) {
+
+    func configure(time: String, temperature: String) {
            timeLabel.text = time
            temperatureLabel.text = temperature
-           
-           if let iconURL = iconURL {
-               weatherIconImageView.kf.setImage(with: iconURL)
-           } else {
-         
-               weatherIconImageView.image = UIImage(systemName: "sun.min.fill")
-           }
+//
+//           if let iconURL = iconURL {
+//               weatherIconImageView.kf.setImage(with: iconURL)
+//           } else {
+//
+//               weatherIconImageView.image = UIImage(systemName: "sun.min.fill")
+//           }
        }
 }
