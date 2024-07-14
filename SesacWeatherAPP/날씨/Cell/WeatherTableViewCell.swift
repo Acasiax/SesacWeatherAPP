@@ -37,9 +37,19 @@ class WeatherTableViewCell: UITableViewCell {
     }
     
     func configure(with times: [String], temperatures: [String]) {
-        self.times = times
+        self.times = times.map { formatTime($0) } // 시간을 포맷팅
         self.temperatures = temperatures
         collectionView.reloadData()
+    }
+    
+    private func formatTime(_ dateTime: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss" // 서버에서 반환하는 날짜 형식에 맞춤
+        if let date = formatter.date(from: dateTime) {
+            formatter.dateFormat = "HH시"
+            return formatter.string(from: date)
+        }
+        return dateTime
     }
 }
 
