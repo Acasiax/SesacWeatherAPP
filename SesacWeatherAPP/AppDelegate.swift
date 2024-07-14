@@ -14,19 +14,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        
         // 전역 색상 설정
         UITabBar.appearance().tintColor = .orange
-        //  UITabBar.appearance().barTintColor = .red
+        // UITabBar.appearance().barTintColor = .red
         UINavigationBar.appearance().tintColor = .systemBlue
         UINavigationBar.appearance().barTintColor = .white
         
-        window = UIWindow(frame: UIScreen.main.bounds)
-      //  window?.rootViewController = HorizentalScrollerVC()
-        window?.rootViewController = HomeViewController()
-        window?.makeKeyAndVisible()
         return true
     }
+
     // MARK: UISceneSession Lifecycle
     
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
