@@ -98,6 +98,8 @@ class HomeViewController: UIViewController {
         setupConstraints()
         setupDelegates()
         bindViewModel()
+        cityNameTextField.text = "seoul"
+        viewModel.cityName.value = cityNameTextField.text ?? ""
     }
     
     private func setupUI() {
