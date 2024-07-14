@@ -104,7 +104,6 @@ class HomeViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .white
-       // view.background.image = UIImage(named: "날씨배경화면")
         addSubviews()
     }
     

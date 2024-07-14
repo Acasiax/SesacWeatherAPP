@@ -63,7 +63,7 @@ extension WeatherTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
         return cell
     }
     
-    // UICollectionViewDelegateFlowLayout 메서드를 구현하여 셀 크기를 동적으로 설정
+   
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // 여기서는 임의로 60x100 크기를 설정했지만 필요에 따라 동적으로 계산할 수 있음
         return CGSize(width: 60, height: 100)
