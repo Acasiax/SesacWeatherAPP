@@ -13,7 +13,6 @@ class WeatherTableViewCell: UITableViewCell {
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 60, height: 100)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(WeatherCollectionViewCell.self, forCellWithReuseIdentifier: WeatherCollectionViewCell.identifier)
         return collectionView
@@ -53,7 +52,7 @@ class WeatherTableViewCell: UITableViewCell {
     }
 }
 
-extension WeatherTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension WeatherTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return times.count
     }
@@ -62,5 +61,11 @@ extension WeatherTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherCollectionViewCell.identifier, for: indexPath) as! WeatherCollectionViewCell
         cell.configure(time: times[indexPath.row], temperature: temperatures[indexPath.row])
         return cell
+    }
+    
+    // UICollectionViewDelegateFlowLayout 메서드를 구현하여 셀 크기를 동적으로 설정
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // 여기서는 임의로 60x100 크기를 설정했지만 필요에 따라 동적으로 계산할 수 있음
+        return CGSize(width: 60, height: 100)
     }
 }

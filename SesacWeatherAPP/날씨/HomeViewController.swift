@@ -22,12 +22,17 @@ class HomeViewController: UIViewController {
            return view
        }()
     
+    
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.backgroundColor = .clear
         tableView.register(WeatherTableViewCell.self, forCellReuseIdentifier: WeatherTableViewCell.identifier)
         tableView.register(DailyForecastTableViewCell.self, forCellReuseIdentifier: DailyForecastTableViewCell.identifier)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 500
         return tableView
     }()
+
     
     private let cityNameTextField: UITextField = {
         let textField = UITextField()
@@ -238,12 +243,49 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "🗓️ 3시간 간격의 일기예보"
-        } else {
-            return "🗓️ 5일 간의 일기예보"
+            if section == 0 {
+                return "🗓️ 3시간 간격의 일기예보"
+            } else {
+                return "🗓️ 5일 간의 일기예보"
+            }
         }
-    }
+
+        func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+            let headerLabel = UILabel()
+            headerLabel.font = UIFont.boldSystemFont(ofSize: 13)
+            headerLabel.textColor = .white
+            
+            if section == 0 {
+                headerLabel.text = "🗓️ 3시간 간격의 일기예보"
+            } else {
+                headerLabel.text = "🗓️ 5일 간의 일기예보"
+            }
+            
+            let headerView = UIView()
+            headerView.addSubview(headerLabel)
+            headerLabel.snp.makeConstraints { make in
+                make.edges.equalToSuperview().inset(8)
+            }
+            
+            return headerView
+        }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+           if indexPath.section == 0 {
+               return 100
+           } else {
+               return 500
+           }
+       }
+
+       private func getDayOfWeek(from dateString: String) -> String {
+           let formatter = DateFormatter()
+           formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+           if let date = formatter.date(from: dateString) {
+               formatter.dateFormat = "EEEE"
+               return formatter.string(from: date)
+           }
+           return dateString
+       }
 }
 
 
