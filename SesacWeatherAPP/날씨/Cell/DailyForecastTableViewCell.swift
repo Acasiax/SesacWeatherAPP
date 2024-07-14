@@ -1,0 +1,71 @@
+//
+//  DailyForecastTableViewCell.swift
+//  SesacWeatherAPP
+//
+//  Created by 이윤지 on 7/14/24.
+//
+
+import UIKit
+
+class DailyForecastTableViewCell: UITableViewCell {
+    static let identifier = "DailyForecastTableViewCell"
+    
+    private let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width - 40, height: 40)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.register(DailyForecastCollectionViewCell.self, forCellWithReuseIdentifier: DailyForecastCollectionViewCell.identifier)
+        return collectionView
+    }()
+    
+    private var days = [String]()
+    private var minTemps = [String]()
+    private var maxTemps = [String]()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        contentView.addSubview(collectionView)
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(8)
+            make.height.equalTo(200)
+        }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configure(with days: [String], minTemps: [String], maxTemps: [String]) {
+        self.days = days.map { getDayOfWeek($0) ?? $0 } // 요일로 변환
+        self.minTemps = minTemps
+        self.maxTemps = maxTemps
+        collectionView.reloadData()
+    }
+    
+
+    func getDayOfWeek(_ dateString: String) -> String? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        guard let date = formatter.date(from: dateString) else { return nil }
+        formatter.dateFormat = "EEEE"
+        formatter.locale = Locale(identifier: "ko_KR") // 한글 요일로 설정
+        return formatter.string(from: date)
+    }
+
+}
+
+extension DailyForecastTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return days.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DailyForecastCollectionViewCell.identifier, for: indexPath) as! DailyForecastCollectionViewCell
+        cell.configure(day: days[indexPath.row], minTemp: minTemps[indexPath.row], maxTemp: maxTemps[indexPath.row])
+        return cell
+    }
+}
+
