@@ -25,36 +25,66 @@ class DailyForecastTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupViews()
+        setupCollectionView()
+    }
+    
+    private func setupViews() {
         contentView.addSubview(collectionView)
-        collectionView.delegate = self
-        collectionView.dataSource = self
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(8)
             make.height.equalTo(200)
         }
     }
     
+    private func setupCollectionView() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+    }
+    
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     func configure(with days: [String], minTemps: [String], maxTemps: [String]) {
-        self.days = days.map { getDayOfWeek($0) ?? $0 } // 요일로 변환
-        self.minTemps = minTemps
-        self.maxTemps = maxTemps
+        var uniqueDays = [String]()
+        var uniqueMinTemps = [String]()
+        var uniqueMaxTemps = [String]()
+        
+        var seenDays = Set<String>()
+        
+        for index in 0..<days.count {
+            let day = days[index]
+            let minTemp = minTemps[index]
+            let maxTemp = maxTemps[index]
+            
+            let dayOfWeek = getDayOfWeek(day) ?? day
+            
+            if !seenDays.contains(dayOfWeek) {
+                seenDays.insert(dayOfWeek)
+                uniqueDays.append(dayOfWeek)
+                uniqueMinTemps.append(minTemp)
+                uniqueMaxTemps.append(maxTemp)
+            }
+        }
+        
+        self.days = uniqueDays
+        self.minTemps = uniqueMinTemps
+        self.maxTemps = uniqueMaxTemps
+        
         collectionView.reloadData()
     }
     
-
     func getDayOfWeek(_ dateString: String) -> String? {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         guard let date = formatter.date(from: dateString) else { return nil }
+        
         formatter.dateFormat = "EEEE"
-        formatter.locale = Locale(identifier: "ko_KR") // 한글 요일로 설정
+        formatter.locale = Locale(identifier: "ko_KR") 
         return formatter.string(from: date)
     }
-
 }
 
 extension DailyForecastTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -68,4 +98,3 @@ extension DailyForecastTableViewCell: UICollectionViewDelegate, UICollectionView
         return cell
     }
 }
-
