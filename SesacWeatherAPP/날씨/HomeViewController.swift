@@ -259,7 +259,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
             } else if indexPath.section == 2 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: MapTableViewCell.identifier, for: indexPath) as! MapTableViewCell
-                // 지도 설정 (필요한 경우 초기 위치 설정)
+            
                 let initialLocation = CLLocation(latitude: 37.5665, longitude: 126.9780) // 서울의 예시 좌표
                 let region = MKCoordinateRegion(center: initialLocation.coordinate, latitudinalMeters: 10000, longitudinalMeters: 10000)
                 cell.mapView.setRegion(region, animated: false)
@@ -332,6 +332,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 
+//다른 곳에 옮기면 cl로케이션
 import UIKit
 import MapKit
 
