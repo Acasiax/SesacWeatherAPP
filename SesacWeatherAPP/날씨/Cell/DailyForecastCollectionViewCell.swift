@@ -12,12 +12,30 @@ import SnapKit
 class DailyForecastCollectionViewCell: UICollectionViewCell {
     static let identifier = "DailyForecastCollectionViewCell"
     
-    private let dayLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20)
-        return label
-    }()
+        private let dayLabel: UILabel = {
+            let label = UILabel()
+            label.textColor = .black
+            label.textAlignment = .left
+            label.font = UIFont.systemFont(ofSize: 20)
+            return label
+        }()
     
+        private let minTempLabel: UILabel = {
+            let label = UILabel()
+            label.textColor = .black
+            label.textAlignment = .left
+            label.font = UIFont.systemFont(ofSize: 20)
+            return label
+        }()
+    
+        private let maxTempLabel: UILabel = {
+            let label = UILabel()
+            label.textColor = .black
+            label.textAlignment = .left
+            label.font = UIFont.systemFont(ofSize: 20)
+            return label
+        }()
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(dayLabel)
@@ -31,8 +49,12 @@ class DailyForecastCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(day: String, minTemp: String, maxTemp: String) {
+//        minTempLabel.text = minTemp
+//        maxTempLabel.text = maxTemp
         dayLabel.text = "\(day): 최저 \(minTemp), 최고 \(maxTemp)"
+       
     }
+
 }
 
 

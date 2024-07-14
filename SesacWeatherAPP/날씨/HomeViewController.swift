@@ -38,6 +38,7 @@ class HomeViewController: UIViewController {
         tableView.backgroundColor = .clear
         tableView.register(WeatherTableViewCell.self, forCellReuseIdentifier: WeatherTableViewCell.identifier)
         tableView.register(DailyForecastTableViewCell.self, forCellReuseIdentifier: DailyForecastTableViewCell.identifier)
+        tableView.register(MapTableViewCell.self, forCellReuseIdentifier: MapTableViewCell.identifier)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 500
         return tableView
@@ -235,7 +236,7 @@ extension HomeViewController: UITextFieldDelegate {
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -243,57 +244,81 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: WeatherTableViewCell.identifier, for: indexPath) as! WeatherTableViewCell
-            let times = viewModel.forecasts.value.map { $0.dt_txt }
-            let temperatures = viewModel.forecasts.value.map { "\($0.main.temp)°" }
-            cell.configure(with: times, temperatures: temperatures)
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: DailyForecastTableViewCell.identifier, for: indexPath) as! DailyForecastTableViewCell
-            let days = viewModel.forecasts.value.map { $0.dt_txt }
-            let minTemps = viewModel.forecasts.value.map { "\($0.main.temp_min)°" }
-            let maxTemps = viewModel.forecasts.value.map { "\($0.main.temp_max)°" }
-            cell.configure(with: days, minTemps: minTemps, maxTemps: maxTemps)
-            return cell
+            if indexPath.section == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: WeatherTableViewCell.identifier, for: indexPath) as! WeatherTableViewCell
+                let times = viewModel.forecasts.value.map { $0.dt_txt }
+                let temperatures = viewModel.forecasts.value.map { "\($0.main.temp)°" }
+                cell.configure(with: times, temperatures: temperatures)
+                return cell
+            } else if indexPath.section == 1 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: DailyForecastTableViewCell.identifier, for: indexPath) as! DailyForecastTableViewCell
+                let days = viewModel.forecasts.value.map { $0.dt_txt }
+                let minTemps = viewModel.forecasts.value.map { "\($0.main.temp_min)°" }
+                let maxTemps = viewModel.forecasts.value.map { "\($0.main.temp_max)°" }
+                cell.configure(with: days, minTemps: minTemps, maxTemps: maxTemps)
+                return cell
+            } else if indexPath.section == 2 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: MapTableViewCell.identifier, for: indexPath) as! MapTableViewCell
+                // 지도 설정 (필요한 경우 초기 위치 설정)
+                let initialLocation = CLLocation(latitude: 37.5665, longitude: 126.9780) // 서울의 예시 좌표
+                let region = MKCoordinateRegion(center: initialLocation.coordinate, latitudinalMeters: 10000, longitudinalMeters: 10000)
+                cell.mapView.setRegion(region, animated: false)
+                return cell
+            } else {
+                return UITableViewCell()
+            }
         }
-    }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "🗓️ 3시간 간격의 일기예보"
-        } else {
-            return "🗓️ 5일 간의 일기예보"
-        }
-    }
+           switch section {
+           case 0:
+               return "🗓️ 3시간 간격의 일기예보"
+           case 1:
+               return "🗓️ 5일 간의 일기예보"
+           case 2:
+               return "🗺️ 현재 위치 지도"
+           default:
+               return nil
+           }
+       }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerLabel = UILabel()
-        headerLabel.font = UIFont.boldSystemFont(ofSize: 13)
-        headerLabel.textColor = .white
-        
-        if section == 0 {
-            headerLabel.text = "🗓️ 3시간 간격의 일기예보"
-        } else {
-            headerLabel.text = "🗓️ 5일 간의 일기예보"
+            let headerLabel = UILabel()
+            headerLabel.font = UIFont.boldSystemFont(ofSize: 13)
+            headerLabel.textColor = .white
+            
+            switch section {
+            case 0:
+                headerLabel.text = "🗓️ 3시간 간격의 일기예보"
+            case 1:
+                headerLabel.text = "🗓️ 5일 간의 일기예보"
+            case 2:
+                headerLabel.text = "🗺️ 현재 위치 지도"
+            default:
+                headerLabel.text = nil
+            }
+            
+            let headerView = UIView()
+            headerView.addSubview(headerLabel)
+            headerLabel.snp.makeConstraints { make in
+                make.edges.equalToSuperview().inset(8)
+            }
+            
+            return headerView
         }
-        
-        let headerView = UIView()
-        headerView.addSubview(headerLabel)
-        headerLabel.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(8)
-        }
-        
-        return headerView
-    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return 100
-        } else {
-            return 300
+            switch indexPath.section {
+            case 0:
+                return 100
+            case 1:
+                return 300
+            case 2:
+                return 400 // 지도 셀의 높이
+            default:
+                return UITableView.automaticDimension
+            }
         }
-    }
     
     private func getDayOfWeek(from dateString: String) -> String {
         let formatter = DateFormatter()
@@ -306,3 +331,27 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+
+import UIKit
+import MapKit
+
+class MapTableViewCell: UITableViewCell {
+    static let identifier = "MapTableViewCell"
+
+    let mapView: MKMapView = {
+        let mapView = MKMapView()
+        return mapView
+    }()
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        contentView.addSubview(mapView)
+        mapView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
