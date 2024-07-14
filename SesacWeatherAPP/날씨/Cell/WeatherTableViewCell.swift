@@ -18,6 +18,7 @@ class WeatherTableViewCell: UITableViewCell {
         return collectionView
     }()
     
+    
     private var times = [String]()
     private var temperatures = [String]()
     
@@ -59,7 +60,7 @@ extension WeatherTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherCollectionViewCell.identifier, for: indexPath) as! WeatherCollectionViewCell
-        cell.configure(time: times[indexPath.row], temperature: temperatures[indexPath.row])
+        cell.configure(time: times[indexPath.row], temperature: temperatures[indexPath.row], iconURL: <#URL?#>)
         return cell
     }
     

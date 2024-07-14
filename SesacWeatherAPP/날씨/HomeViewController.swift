@@ -9,19 +9,29 @@ import UIKit
 import SnapKit
 
 class HomeViewController: UIViewController {
+    private let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = false
+        return scrollView
+    }()
+    
+    private let contentView: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
     private let backgroundImageView: UIImageView = {
-            let imageView = UIImageView()
-            imageView.image = UIImage(named: "날씨배경화면")
-            imageView.contentMode = .scaleAspectFill
-            return imageView
-        }()
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "날씨배경화면")
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
     
     private let overlayView: UIView = {
-           let view = UIView()
-           view.backgroundColor = UIColor.black.withAlphaComponent(0.5) // 어두운 오버레이
-           return view
-       }()
-    
+        let view = UIView()
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.5) // 어두운 오버레이
+        return view
+    }()
     
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -32,7 +42,6 @@ class HomeViewController: UIViewController {
         tableView.estimatedRowHeight = 500
         return tableView
     }()
-
     
     private let cityNameTextField: UITextField = {
         let textField = UITextField()
@@ -104,73 +113,82 @@ class HomeViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .white
-        addSubviews()
-    }
-    
-    private func addSubviews() {
-        view.addSubview(backgroundImageView)
-        view.addSubview(overlayView)
-        view.addSubview(cityNameTextField)
-        view.addSubview(cityNameLabel)
-        view.addSubview(temperatureLabel)
-        view.addSubview(descriptionLabel)
-        view.addSubview(windSpeedLabel)
-        view.addSubview(pressureLabel)
-        view.addSubview(humidityLabel)
-        view.addSubview(tableView)
+        contentView.addSubview(backgroundImageView)
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        
+        
+        contentView.addSubview(overlayView)
+        contentView.addSubview(cityNameTextField)
+        contentView.addSubview(cityNameLabel)
+        contentView.addSubview(temperatureLabel)
+        contentView.addSubview(descriptionLabel)
+        contentView.addSubview(windSpeedLabel)
+        contentView.addSubview(pressureLabel)
+        contentView.addSubview(humidityLabel)
+        contentView.addSubview(tableView)
     }
     
     private func setupConstraints() {
-         backgroundImageView.snp.makeConstraints { make in
-             make.edges.equalToSuperview()
-         }
-         
-         overlayView.snp.makeConstraints { make in
-             make.edges.equalToSuperview()
-         }
-         
-         cityNameTextField.snp.makeConstraints { make in
-             make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
-             make.leading.equalToSuperview().offset(20)
-             make.trailing.equalToSuperview().offset(-20)
-         }
-         
-         cityNameLabel.snp.makeConstraints { make in
-             make.top.equalTo(cityNameTextField.snp.bottom).offset(40)
-             make.centerX.equalToSuperview()
-         }
-         
-         temperatureLabel.snp.makeConstraints { make in
-             make.top.equalTo(cityNameLabel.snp.bottom).offset(20)
-             make.centerX.equalToSuperview()
-         }
-         
-         descriptionLabel.snp.makeConstraints { make in
-             make.top.equalTo(temperatureLabel.snp.bottom).offset(20)
-             make.centerX.equalToSuperview()
-         }
-         
-         windSpeedLabel.snp.makeConstraints { make in
-             make.top.equalTo(descriptionLabel.snp.bottom).offset(20)
-             make.centerX.equalToSuperview()
-         }
-         
-         pressureLabel.snp.makeConstraints { make in
-             make.top.equalTo(windSpeedLabel.snp.bottom).offset(20)
-             make.centerX.equalToSuperview()
-         }
-         
-         humidityLabel.snp.makeConstraints { make in
-             make.top.equalTo(pressureLabel.snp.bottom).offset(20)
-             make.centerX.equalToSuperview()
-         }
-         
-         tableView.snp.makeConstraints { make in
-             make.top.equalTo(humidityLabel.snp.bottom).offset(20)
-             make.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
-         }
-     }
-    
+        scrollView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        contentView.snp.makeConstraints { make in
+            make.edges.width.equalTo(scrollView)
+            make.bottom.equalTo(tableView.snp.bottom)
+        }
+        
+        backgroundImageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        overlayView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        cityNameTextField.snp.makeConstraints { make in
+            make.top.equalTo(contentView.safeAreaLayoutGuide).offset(20)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+        }
+        
+        cityNameLabel.snp.makeConstraints { make in
+            make.top.equalTo(cityNameTextField.snp.bottom).offset(40)
+            make.centerX.equalToSuperview()
+        }
+        
+        temperatureLabel.snp.makeConstraints { make in
+            make.top.equalTo(cityNameLabel.snp.bottom).offset(20)
+            make.centerX.equalToSuperview()
+        }
+        
+        descriptionLabel.snp.makeConstraints { make in
+            make.top.equalTo(temperatureLabel.snp.bottom).offset(20)
+            make.centerX.equalToSuperview()
+        }
+        
+        windSpeedLabel.snp.makeConstraints { make in
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(20)
+            make.centerX.equalToSuperview()
+        }
+        
+        pressureLabel.snp.makeConstraints { make in
+            make.top.equalTo(windSpeedLabel.snp.bottom).offset(20)
+            make.centerX.equalToSuperview()
+        }
+        
+        humidityLabel.snp.makeConstraints { make in
+            make.top.equalTo(pressureLabel.snp.bottom).offset(20)
+            make.centerX.equalToSuperview()
+            make.bottom.lessThanOrEqualTo(tableView.snp.top).offset(-20)
+        }
+        
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(humidityLabel.snp.bottom).offset(20)
+            make.leading.trailing.bottom.equalTo(contentView.safeAreaLayoutGuide)
+        }
+    }
     
     private func setupDelegates() {
         cityNameTextField.delegate = self
@@ -244,54 +262,48 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-            if section == 0 {
-                return "🗓️ 3시간 간격의 일기예보"
-            } else {
-                return "🗓️ 5일 간의 일기예보"
-            }
+        if section == 0 {
+            return "🗓️ 3시간 간격의 일기예보"
+        } else {
+            return "🗓️ 5일 간의 일기예보"
         }
-
-        func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-            let headerLabel = UILabel()
-            headerLabel.font = UIFont.boldSystemFont(ofSize: 13)
-            headerLabel.textColor = .white
-            
-            if section == 0 {
-                headerLabel.text = "🗓️ 3시간 간격의 일기예보"
-            } else {
-                headerLabel.text = "🗓️ 5일 간의 일기예보"
-            }
-            
-            let headerView = UIView()
-            headerView.addSubview(headerLabel)
-            headerLabel.snp.makeConstraints { make in
-                make.edges.equalToSuperview().inset(8)
-            }
-            
-            return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerLabel = UILabel()
+        headerLabel.font = UIFont.boldSystemFont(ofSize: 13)
+        headerLabel.textColor = .white
+        
+        if section == 0 {
+            headerLabel.text = "🗓️ 3시간 간격의 일기예보"
+        } else {
+            headerLabel.text = "🗓️ 5일 간의 일기예보"
         }
+        
+        let headerView = UIView()
+        headerView.addSubview(headerLabel)
+        headerLabel.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(8)
+        }
+        
+        return headerView
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-           if indexPath.section == 0 {
-               return 100
-           } else {
-               return 400
-           }
-       }
-
-       private func getDayOfWeek(from dateString: String) -> String {
-           let formatter = DateFormatter()
-           formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-           if let date = formatter.date(from: dateString) {
-               formatter.dateFormat = "EEEE"
-               return formatter.string(from: date)
-           }
-           return dateString
-       }
+        if indexPath.section == 0 {
+            return 100
+        } else {
+            return 400
+        }
+    }
+    
+    private func getDayOfWeek(from dateString: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        if let date = formatter.date(from: dateString) {
+            formatter.dateFormat = "EEEE"
+            return formatter.string(from: date)
+        }
+        return dateString
+    }
 }
-
-
-
-
-
-
-
