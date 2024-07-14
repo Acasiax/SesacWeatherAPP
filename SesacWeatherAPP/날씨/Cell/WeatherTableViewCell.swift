@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class WeatherTableViewCell: UITableViewCell {
     static let identifier = "WeatherTableViewCell"
@@ -37,10 +38,18 @@ class WeatherTableViewCell: UITableViewCell {
     }
     
     func configure(with times: [String], temperatures: [String]) {
-        self.times = times.map { formatTime($0) } // 시간을 포맷팅
-        self.temperatures = temperatures
-        collectionView.reloadData()
-    }
+            let currentDateTime = Date()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            
+            // 현재 시간 이후의 데이터만 필터링
+            //지금 새벽 12시라서 3시간 간격의 데이터 중 다음 시간이 03시
+            let filteredTimes = times.filter { formatter.date(from: $0)! >= currentDateTime }
+            
+            self.times = filteredTimes.map { formatTime($0) }
+            self.temperatures = temperatures
+            collectionView.reloadData()
+        }
     
     private func formatTime(_ dateTime: String) -> String {
         let formatter = DateFormatter()

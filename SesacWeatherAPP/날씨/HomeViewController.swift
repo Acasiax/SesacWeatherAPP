@@ -113,6 +113,7 @@ class HomeViewController: UIViewController {
     }
     
     private func subView() {
+        
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         
@@ -135,7 +136,9 @@ class HomeViewController: UIViewController {
         
         contentView.snp.makeConstraints { make in
             make.edges.width.equalTo(scrollView)
-            make.bottom.equalTo(tableView.snp.bottom)
+            //make.bottom.equalTo(tableView.snp.bottom)
+            make.edges.bottom.equalTo(scrollView)
+           
         }
         
         backgroundImageView.snp.makeConstraints { make in
@@ -243,6 +246,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return 1
     }
     
+    //🌟
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             if indexPath.section == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: WeatherTableViewCell.identifier, for: indexPath) as! WeatherTableViewCell
@@ -250,6 +254,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                 let temperatures = viewModel.forecasts.value.map { "\($0.main.temp)°" }
                 cell.configure(with: times, temperatures: temperatures)
                 return cell
+                
             } else if indexPath.section == 1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: DailyForecastTableViewCell.identifier, for: indexPath) as! DailyForecastTableViewCell
                 let days = viewModel.forecasts.value.map { $0.dt_txt }
@@ -257,6 +262,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                 let maxTemps = viewModel.forecasts.value.map { "\($0.main.temp_max)°" }
                 cell.configure(with: days, minTemps: minTemps, maxTemps: maxTemps)
                 return cell
+                
             } else if indexPath.section == 2 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: MapTableViewCell.identifier, for: indexPath) as! MapTableViewCell
             
@@ -264,6 +270,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                 let region = MKCoordinateRegion(center: initialLocation.coordinate, latitudinalMeters: 10000, longitudinalMeters: 10000)
                 cell.mapView.setRegion(region, animated: false)
                 return cell
+                
             } else {
                 return UITableViewCell()
             }
@@ -312,7 +319,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             case 0:
                 return 100
             case 1:
-                return 300
+                return 250
             case 2:
                 return 400 // 지도 셀의 높이
             default:
